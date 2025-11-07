@@ -1,0 +1,35 @@
+1 Installation
+Starting with Python 3.13, the official macOS and Windows installers optionally support installing free-threaded
+Python binaries. The installers are available at https://www.python.org/downloads/.
+For information on other platforms, see the Installing a Free-Threaded Python, a community-maintained installation
+guide for installing free-threaded Python.
+When building CPython from source, the --disable-gil configure option should be used to build a free-threaded
+Python interpreter.
+2 Identifying free-threaded Python
+To check if the current interpreter supports free-threading, python -VV and sys.version contain “experimental
+free-threading build”. The new sys._is_gil_enabled() function can be used to check whether the GIL is
+actually disabled in the running process.
+The sysconfig.get_config_var("Py_GIL_DISABLED") configuration variable can be used to determine
+whether the build supports free threading. If the variable is set to 1, then the build supports free threading. This is
+the recommended mechanism for decisions related to the build configuration.
+3 The global interpreter lock in free-threaded Python
+Free-threaded builds of CPython support optionally running with the GIL enabled at runtime using the environment
+variable PYTHON_GIL or the command-line option -X gil.
+The GIL may also automatically be enabled when importing a C-API extension module that is not explicitly marked
+as supporting free threading. A warning will be printed in this case.
+In addition to individual package documentation, the following websites track the status of popular packages support
+for free threading:
+• https://py-free-threading.github.io/tracking/
+• https://hugovk.github.io/free-threaded-wheels/
+4 Thread safety
+The free-threaded build of CPython aims to provide similar thread-safety behavior at the Python level to the de-
+fault GIL-enabled build. Built-in types like dict, list, and set use internal locks to protect against concurrent
+modifications in ways that behave similarly to the GIL. However, Python has not historically guaranteed specific
+behavior for concurrent modifications to these built-in types, so this should be treated as a description of the current
+implementation, not a guarantee of current or future behavior.
+® Note
+It’s recommended to use the threading.Lock or other synchronization primitives instead of relying on the
+internal locks of built-in types, when possible.
+5 Known limitations
+This section describes known limitations of the free-threaded CPython build.
+2

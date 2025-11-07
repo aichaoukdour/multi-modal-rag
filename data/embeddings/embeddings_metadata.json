@@ -1,0 +1,20 @@
+{
+  "image_paths": [
+    "data/imgs/hai_ai-index-report-2025_chapter2_excerpts_1_of_8.jpg",
+    "data/imgs/hai_ai-index-report-2025_chapter2_excerpts_2_of_8.jpg",
+    "data/imgs/hai_ai-index-report-2025_chapter2_excerpts_3_of_8.jpg",
+    "data/imgs/hai_ai-index-report-2025_chapter2_excerpts_4_of_8.jpg",
+    "data/imgs/hai_ai-index-report-2025_chapter2_excerpts_5_of_8.jpg",
+    "data/imgs/hai_ai-index-report-2025_chapter2_excerpts_6_of_8.jpg",
+    "data/imgs/hai_ai-index-report-2025_chapter2_excerpts_7_of_8.jpg",
+    "data/imgs/hai_ai-index-report-2025_chapter2_excerpts_8_of_8.jpg"
+  ],
+  "embedding_shape": [
+    8,
+    1139,
+    128
+  ],
+  "model_name": "vidore/colSmol-256M",
+  "batch_size": 4,
+  "num_images": 8
+}
